@@ -1,0 +1,13 @@
+name: test
+on: [push, workflow_dispatch]
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./
+        id: img
+        with:
+          prompt: "a paper boat on a calm lake at sunrise, soft light"
+          output-path: out/boat.webp
+      - run: ls -la out && echo "${{ steps.img.outputs.url }}"

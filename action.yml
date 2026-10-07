@@ -1,0 +1,30 @@
+name: Veida AI Image Generator
+description: Generate an AI image from a prompt in a workflow with Veida, no API key or account needed
+author: Veida
+branding:
+  icon: image
+  color: purple
+inputs:
+  prompt:
+    description: What to make
+    required: true
+  aspect-ratio:
+    description: 1:1, 16:9, 9:16, 4:3 or 3:4
+    required: false
+    default: "1:1"
+  output-path:
+    description: If set, the image is downloaded to this path in the workspace
+    required: false
+    default: ""
+  timeout-minutes:
+    description: Deadline for the whole call, including the queue
+    required: false
+    default: "10"
+outputs:
+  url:
+    description: URL of the finished image
+  path:
+    description: Where the image was saved, if output-path was set
+runs:
+  using: node20
+  main: index.mjs
